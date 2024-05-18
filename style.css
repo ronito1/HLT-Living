@@ -24,6 +24,7 @@ header nav ul {
     display: flex;
     justify-content: center;
     gap: 20px;
+    flex-wrap: wrap; /* Ensure nav items wrap on small screens */
 }
 
 header nav ul li {
@@ -34,6 +35,11 @@ header nav ul li a {
     color: white;
     text-decoration: none;
     padding: 10px 20px;
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+header nav ul li a:hover {
+    color: orange; /* Change to desired color on hover */
 }
 
 #main-content {
@@ -67,7 +73,8 @@ section h2 {
 
 .bmi-calculator input {
     padding: 5px;
-    width: 200px;
+    width: 100%; /* Ensure inputs are responsive */
+    max-width: 200px;
     background-color: #333; /* Dark background for input fields */
     color: #fff; /* White text for input fields */
     border: 1px solid #555;
@@ -79,6 +86,7 @@ section h2 {
     color: white;
     border: none;
     cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for background color change */
 }
 
 .bmi-calculator button:hover {
@@ -102,7 +110,8 @@ section h2 {
     border: 1px solid #555;
     padding: 20px;
     border-radius: 5px;
-    width: 300px;
+    width: 100%; /* Ensure concepts are responsive */
+    max-width: 300px;
     text-align: center;
 }
 
@@ -122,6 +131,7 @@ section h2 {
     border: none;
     padding: 10px 20px;
     cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for background color change */
 }
 
 .concept-details-btn:hover {
@@ -143,6 +153,7 @@ section h2 {
     margin: 10px 0;
     color: #fff;
 }
+
 .testimonial-container {
     display: flex;
     flex-wrap: wrap;
@@ -151,7 +162,8 @@ section h2 {
 }
 
 .testimonial {
-    width: 300px;
+    width: 100%; /* Ensure testimonials are responsive */
+    max-width: 300px;
     height: 200px;
     background-color: #222; /* Dark background for testimonials */
     border-radius: 10px;
@@ -165,35 +177,61 @@ section h2 {
 }
 
 .testimonial-author {
-    color: #fff;
+    color: #4CAF50;
     font-weight: bold;
     text-align: right;
-    margin: 0 20px;
-}
-#resources {
-    color: #fff; /* Set text color to white */
+    margin: 10px;
 }
 
-.resources-list a {
-    color: #fff; /* Ensure links in the resources section are white */
+.resources-list {
+    list-style-type: none;
+    padding: 0;
+    max-width: 800px;
+    margin: 0 auto;
+    color: white;
 }
 
 .resources-list li {
-    margin: 10px 0;
+    margin: 5px 0;
 }
-nav a:hover {
-    color: orange   ;
+
+.resources-list a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+.resources-list a:hover {
+    color: orange; /* Change to desired color on hover */
 }
 
 footer {
-    background-color: #000; /* Black background for the footer */
-    color: white;
+    background-color: #333;
+    padding: 20px 0;
     text-align: center;
-    padding: 10px 0;
-    margin-top: 40px;
+    color: white;
 }
 
 footer a {
-    color: orange;
+    color: blue;
     text-decoration: none;
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+footer a:hover {
+    color: orange; /* Change to desired color on hover */
+}
+
+@media (max-width: 600px) {
+    .bmi-calculator input {
+        width: 80%; /* Ensure inputs are responsive */
+    }
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    .concept-container, .testimonial-container {
+        flex-direction: column;
+        align-items: center;
+    }
 }
