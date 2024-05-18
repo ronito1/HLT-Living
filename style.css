@@ -1,0 +1,199 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000; /* Black background for the entire body */
+    color: #fff; /* White text color for the entire body */
+}
+
+header {
+    background-color: #000; /* Black background for the header */
+    padding: 10px 0;
+    text-align: center;
+    color: white;
+}
+
+header h1 {
+    margin: 0;
+    color: greenyellow; /* Dark blue color for the h1 elements */
+}
+
+header nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+header nav ul li {
+    display: inline;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+
+#main-content {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+section h2 {
+    text-align: center;
+    color: greenyellow; /* Dark blue color for section h2 elements */
+}
+
+.intro-text {
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.bmi-calculator {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.bmi-calculator label, .bmi-calculator input, .bmi-calculator button {
+    display: block;
+    margin: 10px auto;
+    font-size: 1em;
+}
+
+.bmi-calculator input {
+    padding: 5px;
+    width: 200px;
+    background-color: #333; /* Dark background for input fields */
+    color: #fff; /* White text for input fields */
+    border: 1px solid #555;
+}
+
+.bmi-calculator button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.bmi-calculator button:hover {
+    background-color: #45a049;
+}
+
+.bmi-calculator p {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+.concept-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.concept {
+    background-color: #222; /* Dark background for concept cards */
+    border: 1px solid #555;
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px;
+    text-align: center;
+}
+
+.concept-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.concept h3 {
+    margin: 10px 0;
+    color: #4CAF50;
+}
+
+.concept-details-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.concept-details-btn:hover {
+    background-color: #45a049;
+}
+
+.concept-details {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #ccc;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item h3 {
+    margin: 10px 0;
+    color: #fff;
+}
+.testimonial-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.testimonial {
+    width: 300px;
+    height: 200px;
+    background-color: #222; /* Dark background for testimonials */
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+.testimonial blockquote {
+    font-style: italic;
+    color: #ddd;
+    margin: 20px;
+}
+
+.testimonial-author {
+    color: #fff;
+    font-weight: bold;
+    text-align: right;
+    margin: 0 20px;
+}
+#resources {
+    color: #fff; /* Set text color to white */
+}
+
+.resources-list a {
+    color: #fff; /* Ensure links in the resources section are white */
+}
+
+.resources-list li {
+    margin: 10px 0;
+}
+nav a:hover {
+    color: orange   ;
+}
+
+footer {
+    background-color: #000; /* Black background for the footer */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 40px;
+}
+
+footer a {
+    color: orange;
+    text-decoration: none;
+}
