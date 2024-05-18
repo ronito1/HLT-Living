@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="healthyLivingExplorer">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Healthy Living</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body ng-controller="HealthyLivingController">
+    <header>
+        <h1 class="underlined">A Guide to Healthy Living</h1>
+        <nav>
+            <ul>
+                <li><a href="#bmi-calculator">Calculate your BMI</a></li>
+                <li><a href="#key-concepts">Key Concepts</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#resources">Resources</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="main-content">
+        <main>
+            <section class="intro">
+                <p class="intro-text">
+                    Healthy living involves making choices that enhance your physical, mental, and emotional well-being.
+                    By adopting healthy habits, you can improve your quality of life and reduce the risk of chronic diseases.
+                    Start your journey towards a healthier you today!
+                </p>
+            </section>
+            <br>
+            <section id="bmi-calculator">
+                <h2>Calculate your BMI</h2>
+                <div class="bmi-calculator">
+                    <label for="weight">Weight (kg):</label>
+                    <input type="number" id="weight" ng-model="userWeight"><br>
+                    <label for="height">Height (cm):</label>
+                    <input type="number" id="height" ng-model="userHeight"><br>
+                    <button ng-click="calculateBMI()">Calculate BMI</button>
+                    <p ng-if="bmiResult">Your BMI: {{bmiResult}} ({{bmiStatus}})</p>
+                    <p ng-if="suggestion">Suggestion: {{suggestion}}</p>
+                </div>
+                <br>
+            </section>
+            <section id="key-concepts">
+                <h2>Keys to Well-being</h2>
+                <div class="concept-container">
+                    <div class="concept" ng-repeat="concept in concepts">
+                        <img ng-src="{{concept.icon}}" alt="{{concept.title}} Icon" class="concept-icon">
+                        <h3>{{concept.title}}</h3>
+                        <p>{{concept.description}}</p>
+                        <button class="concept-details-btn" ng-click="redirectToPage(concept)" ng-mouseenter="showDescription(concept)" ng-mouseleave="hideDescription(concept)">{{concept.detailsButton}}</button>
+                        <p class="concept-details" ng-show="concept.showDetails">{{concept.detailedDescription}}</p>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+            </section>
+            <br>
+            <br>
+            <br>
+            <section id="faq">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-container">
+                    <div class="faq-item" ng-repeat="faq in faqs">
+                        <h3>{{faq.question}}</h3>
+                        <p>{{faq.answer}}</p>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <section id="testimonials">
+                    <h2>Testimonials</h2>
+                    <div class="testimonial-container">
+                        <div class="testimonial" ng-repeat="testimonial in testimonials">
+                            <div class="testimonial-hover">
+                                <blockquote>{{testimonial.text}}</blockquote>
+                                <p class="testimonial-author">- {{testimonial.author}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <br>
+                <br>
+                <br>
+                <section id="resources">
+                    <h2>Additional Resources</h2>
+                    <ul class="resources-list">
+                        <li ng-repeat="resource in resources">
+                            <a href="{{resource.link}}" target="_blank">{{resource.title}}</a>
+                        </li>
+                    </ul>
+                </section>
+            </main>
+        <footer>
+            <p>For more information, visit the <a href="https://www.who.int/">World Health Organization</a> and the <a href="https://www.cdc.gov/">Centers for Disease Control and Prevention</a> &copy;</p>
+            <p>A Blog By Ronit Pathak <a href="https://github.com/ronito1?tab=repositories">@github </a>
+                , Shambhavi K.M</p>
+        </footer>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
