@@ -97,7 +97,40 @@ section h2 {
     font-size: 1.2em;
     margin-top: 10px;
 }
+.bmi-calculator button-container button:nth-child(2):hover::after {
+    content: "Compare your BMI with other users";
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.8); /* Adjust the background color as needed */
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 1.0em;
+    color: #000; /* Adjust the text color as needed */}
 
+.bmi-results-table {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #222; /* Dark background for table */
+    color: #fff; /* White text color for table */
+}
+
+.bmi-results-table th, .bmi-results-table td {
+    border: 1px solid #555; /* Border color for table cells */
+    padding: 10px;
+    text-align: center;
+}
+
+.bmi-results-table th {
+    background-color: #333; /* Darker background for table header */
+}
+button-container {
+    text-align: center;
+}
 .concept-container {
     display: flex;
     flex-wrap: wrap;
@@ -219,7 +252,7 @@ footer a {
 }
 
 footer a:hover {
-    color: orange; /* Change to desired color on hover */
+    color: orange; /*Change to desired color on hover */
 }
 
 @media (max-width: 600px) {
