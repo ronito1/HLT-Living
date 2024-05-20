@@ -68,9 +68,9 @@ angular.module('healthyLivingExplorer', [])
     ]
 
     $scope.testimonials = [
-        { text: 'This guide has completely transformed my lifestyle. Highly recommend it to anyone looking to improve their health.', author: 'Rakesh' },
-        { text: 'The BMI calculator and tips on nutrition were particularly helpful for me. Great resource!', author: 'Ravi' },
-        { text: 'A comprehensive and easy-to-follow guide on healthy living. Thank you!', author: 'Simran' }
+        { text: 'This guide has completely transformed my lifestyle. Highly recommend it to anyone looking to improve their health.', author: 'Ram' },
+        { text: 'The BMI calculator and tips on nutrition were particularly helpful for me. Great resource!', author: 'Sam' },
+        { text: 'A comprehensive and easy-to-follow guide on healthy living. Thank you!', author: 'Jam' }
     ]
 
     $scope.faqs = [
@@ -84,7 +84,8 @@ angular.module('healthyLivingExplorer', [])
         { title: '2. Centers for Disease Control and Prevention (CDC)', link: 'https://www.cdc.gov' },
         { title: '3. National Institutes of Health (NIH)', link: 'https://www.nih.gov' }
     ]
-
+    $scope.bmiResults = [];
+    
     $scope.redirectToPage = function(concept) {
         switch (concept.title) {
             case 'Nutrition':
@@ -124,24 +125,95 @@ angular.module('healthyLivingExplorer', [])
         concept.showDetails = false
     }
 
+    
     $scope.calculateBMI = function() {
-        if ($scope.userWeight && $scope.userHeight) {
+        if ($scope.userWeight && $scope.userHeight && $scope.userName) {
             const heightInMeters = $scope.userHeight / 100;
-            $scope.bmiResult = ($scope.userWeight / (heightInMeters * heightInMeters)).toFixed(2)
+            const bmi = ($scope.userWeight / (heightInMeters * heightInMeters)).toFixed(2);
+            let status, suggestion;
 
-            if ($scope.bmiResult < 18.5) {
-                $scope.bmiStatus = 'Underweight'
-                $scope.suggestion = 'Consider focusing on Nutrition to gain a healthy weight.'
-            } else if ($scope.bmiResult < 24.9) {
-                $scope.bmiStatus = 'Normal weight'
-                $scope.suggestion = 'Keep up with a balanced approach including Exercise and Nutrition.'
-            } else if ($scope.bmiResult < 29.9) {
-                $scope.bmiStatus = 'Overweight'
-                $scope.suggestion = 'Incorporate more Exercise and monitor Nutrition.'
+            if (bmi < 18.5) {
+                status = 'Underweight';
+                suggestion = 'Consider focusing on Nutrition to gain a healthy weight.';
+            } else if (bmi < 24.9) {
+                status = 'Normal weight';
+                suggestion = 'Keep up with a balanced approach including Exercise and Nutrition.';
+            } else if (bmi < 29.9) {
+                status = 'Overweight';
+                suggestion = 'Incorporate more Exercise and monitor Nutrition.';
             } else {
-                $scope.bmiStatus = 'Obesity'
-                $scope.suggestion = 'Focus on a comprehensive approach with Exercise, Nutrition, and Preventive Healthcare.'
+                status = 'Obesity';
+                suggestion = 'Focus on a comprehensive approach with Exercise, Nutrition, and Preventive Healthcare.';
             }
+
+            $scope.bmiResults.push({
+                name: $scope.userName,
+                weight: $scope.userWeight,
+                height: $scope.userHeight,
+                bmi: bmi,
+                status: status,
+                suggestion: suggestion
+            });
+
+            $scope.userName = '';
+            $scope.userWeight = '';
+            $scope.userHeight = '';
+            $scope.bmiResult = bmi;
+            $scope.bmiStatus = status;
+            $scope.suggestion = suggestion;
         }
+    };
+
+    $scope.viewResults = function() {
+        const newTab = $window.open('', '_blank');
+        let htmlContent = `
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>BMI Results</title>
+                <style>
+                    body { font-family: Arial, sans-serif; padding: 20px; }
+                    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+                    th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+                    th { background-color: #f2f2f2; }
+                </style>
+            </head>
+            <body>
+                <h1>BMI Results</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Weight (kg)</th>
+                            <th>Height (cm)</th>
+                            <th>BMI</th>
+                            <th>Status</th>
+                            <th>Suggestion</th>
+                        </tr>
+                    </thead>
+                    <tbody>`;
+
+        $scope.bmiResults.forEach(result => {
+            htmlContent += `
+                        <tr>
+                            <td>${result.name}</td>
+                            <td>${result.weight}</td>
+                            <td>${result.height}</td>
+                            <td>${result.bmi}</td>
+                            <td>${result.status}</td>
+                            <td>${result.suggestion}</td>
+                        </tr>`;
+        });
+
+        htmlContent += `
+                    </tbody>
+                </table>
+            </body>
+            </html>`;
+
+        newTab.document.write(htmlContent);
+        newTab.document.close();
     }
-})
+}) 
